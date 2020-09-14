@@ -22,18 +22,21 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="计算机网络学习笔记（一）目的：  本系列的学习内容是为了补足自己的基础知识，因为不是计算机科班出生，所以在基础知识上总是存在欠缺，痛定思痛，还是要从基础抓起 这是建立个人知识体系学习数据：《计算机网络：自定向下方法》">
+  <meta name="description" content="计算机网络学习笔记（一）—— 应用层五层网络模型 为什么要分成五层结构 为了明确分工，网络系统本就是一个复杂的系统，如果没有明确的分层分工，就会出现高耦合的情况，牵一发而动全身 但是如果进行了明确的分层，那么每层的协议相对独立，某一个层面协议调整不会影响整个过程，也方便扩展  具体是哪五层 应用层：终端机直接操控接触的一层，是分布式的应用程序交互的通讯层，主要的协议有http，smtp，tcp（豹">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络(一)">
 <meta property="og:url" content="http://yoursite.com/2020/08/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-1/index.html">
 <meta property="og:site_name" content="贝贝的小屋">
-<meta property="og:description" content="计算机网络学习笔记（一）目的：  本系列的学习内容是为了补足自己的基础知识，因为不是计算机科班出生，所以在基础知识上总是存在欠缺，痛定思痛，还是要从基础抓起 这是建立个人知识体系学习数据：《计算机网络：自定向下方法》">
+<meta property="og:description" content="计算机网络学习笔记（一）—— 应用层五层网络模型 为什么要分成五层结构 为了明确分工，网络系统本就是一个复杂的系统，如果没有明确的分层分工，就会出现高耦合的情况，牵一发而动全身 但是如果进行了明确的分层，那么每层的协议相对独立，某一个层面协议调整不会影响整个过程，也方便扩展  具体是哪五层 应用层：终端机直接操控接触的一层，是分布式的应用程序交互的通讯层，主要的协议有http，smtp，tcp（豹">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/09/14/wrPNqS.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/09/14/wrVLeP.png">
 <meta property="article:published_time" content="2020-08-29T09:26:26.000Z">
-<meta property="article:modified_time" content="2020-09-06T03:10:52.149Z">
+<meta property="article:modified_time" content="2020-09-14T09:24:48.761Z">
 <meta property="article:author" content="钢铁雷诺">
 <meta property="article:tag" content="网络技术基础">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/09/14/wrPNqS.png">
 
 <link rel="canonical" href="http://yoursite.com/2020/08/29/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-1/">
 
@@ -198,7 +201,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-06 11:10:52" itemprop="dateModified" datetime="2020-09-06T11:10:52+08:00">2020-09-06</time>
+                <time title="修改时间：2020-09-14 17:24:48" itemprop="dateModified" datetime="2020-09-14T17:24:48+08:00">2020-09-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,19 +224,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="计算机网络学习笔记（一）"><a href="#计算机网络学习笔记（一）" class="headerlink" title="计算机网络学习笔记（一）"></a>计算机网络学习笔记（一）</h1><p>目的：</p>
-<ol>
-<li>本系列的学习内容是为了补足自己的基础知识，因为不是计算机科班出生，所以在基础知识上总是存在欠缺，痛定思痛，还是要从基础抓起</li>
-<li>这是建立个人知识体系<br>学习数据：《计算机网络：自定向下方法》<a id="more"></a>
-
-</li>
-</ol>
-<h1 id="总：五层网络模型"><a href="#总：五层网络模型" class="headerlink" title="总：五层网络模型"></a>总：五层网络模型</h1><ol>
+        <h1 id="计算机网络学习笔记（一）——-应用层"><a href="#计算机网络学习笔记（一）——-应用层" class="headerlink" title="计算机网络学习笔记（一）—— 应用层"></a>计算机网络学习笔记（一）—— 应用层</h1><h1 id="五层网络模型"><a href="#五层网络模型" class="headerlink" title="五层网络模型"></a>五层网络模型</h1><ol>
 <li><p>为什么要分成五层结构<br> 为了明确分工，网络系统本就是一个复杂的系统，如果没有明确的分层分工，就会出现高耦合的情况，牵一发而动全身<br> 但是如果进行了明确的分层，那么每层的协议相对独立，某一个层面协议调整不会影响整个过程，也方便扩展</p>
 </li>
-<li><p>具体是哪五层<br> 应用层：终端机直接操控接触的一层，是分布式的应用程序交互的通讯层，主要的协议有http，smtp，tcp（豹纹）<br>运输层：主要是在应用层的端口将报文组成报文段，传输给其他终端。主要的协议有tcp，udp（报文段）<br>网络层：主要是针对因特网，主要协议是IP（数据报）<br>链路层：<br>物理层：</p>
+<li><p>具体是哪五层<br> 应用层：终端机直接操控接触的一层，是分布式的应用程序交互的通讯层，主要的协议有http，smtp，tcp（豹纹）<br>运输层：主要是在应用层的端口将报文组成报文段，传输给其他终端。主要的协议有tcp，udp（报文段）<br>网络层：主要是针对因特网，主要协议是IP（数据报）<br>链路层：略<br>物理层：略</p>
 </li>
 </ol>
+   <a id="more"></a>
+
 <h1 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h1><pre><code>通过完成在不同端系统的应用程序通信，不需要依赖网络核心设备（路由器，链路层交换机），就可以完成各种网络应用程序的部署和发展</code></pre>
 <h2 id="1-应用层协议原理"><a href="#1-应用层协议原理" class="headerlink" title="1 应用层协议原理"></a>1 应用层协议原理</h2><h3 id="1-1-网络应用程序体系结构"><a href="#1-1-网络应用程序体系结构" class="headerlink" title="1.1 网络应用程序体系结构"></a>1.1 网络应用程序体系结构</h3><ul>
 <li>客服-服务器结构<ul>
@@ -291,28 +289,94 @@
 </ul>
 </li>
 </ul>
-<h2 id="2-web和HTTP"><a href="#2-web和HTTP" class="headerlink" title="2. web和HTTP"></a>2. web和HTTP</h2><h3 id="2-1-HTTP概况"><a href="#2-1-HTTP概况" class="headerlink" title="2.1 HTTP概况"></a>2.1 HTTP概况</h3><pre><code>1. http: 超文本传输协议（Hypertext Transfer protocol），是Web的应用层协议，它是web的核心。http由两个程序实现：一个客户端程序和一个服务器程序。两个程序运行在不同的端系统中，通过交换HTTP报文
-进行会话。http定义了这些报文的格式以及双方交换报文的方式
-2. 一些术语：  
-    1. web页面(Web page): 由对象组成的文档集合
-    2. 对象（object）： 一个文件，例如一个HTML文件，一个JPEG图形，一个java小程序等这样的文件，他们可以通过YRL地址寻址
-    3. HTML基本文件：多数对象含有一个HTML文本以及几个引用对象
-    4. Web浏览器：http的客户端
-    5. web服务器：http的服务端
-    6. 无状态协议：http服务器不会保存任何关于客户的信息，同一个客户对一个对象的多次请求，服务器不会因为客户的再一次请求而不做出反应</code></pre>
-<h3 id="2-2-非持续连接和持续连接"><a href="#2-2-非持续连接和持续连接" class="headerlink" title="2.2 非持续连接和持续连接"></a>2.2 非持续连接和持续连接</h3><pre><code>1. 采用非持续连接的HTTP  
-    * 什么是非持续链接： 所有的请求及其响应经相同的TCP链接发送
-    * 非持续情况下，整个请求响应过程是怎样的？  
-      我们模拟从服务器向客户传送一个web页面的步骤，来说明整个链接过程： </code></pre>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HTTP客户端-&gt;服务器: TCP连接请求报文</span><br><span class="line">Note right of HTTP客户端: 80端口</span><br><span class="line">服务器--&gt;服务器: 检索出请求对象封装在响应报文中</span><br><span class="line">服务器--&gt;HTTP客户端: 响应报文</span><br><span class="line">服务器-&gt;HTTP客户端: 通知断开连接</span><br><span class="line">HTTP客户端--&gt;服务器: 接收到报文通知，并断开连接 </span><br></pre></td></tr></table></figure>
+<h2 id="2-web和HTTP"><a href="#2-web和HTTP" class="headerlink" title="2. web和HTTP"></a>2. web和HTTP</h2><h3 id="2-1-HTTP概况"><a href="#2-1-HTTP概况" class="headerlink" title="2.1 HTTP概况"></a>2.1 HTTP概况</h3><ol>
+<li>http: 超文本传输协议（Hypertext Transfer protocol），是Web的应用层协议，它是web的核心。http由两个程序实现：一个客户端程序和一个服务器程序。两个程序运行在不同的端系统中，通过交换HTTP报文<br>进行会话。http定义了这些报文的格式以及双方交换报文的方式</li>
+<li>一些术语：  <ol>
+<li>web页面(Web page): 由对象组成的文档集合</li>
+<li>对象（object）： 一个文件，例如一个HTML文件，一个JPEG图形，一个java小程序等这样的文件，他们可以通过YRL地址寻址</li>
+<li>HTML基本文件：多数对象含有一个HTML文本以及几个引用对象</li>
+<li>Web浏览器：http的客户端</li>
+<li>web服务器：http的服务端</li>
+<li>无状态协议：http服务器不会保存任何关于客户的信息，同一个客户对一个对象的多次请求，服务器不会因为客户的再一次请求而不做出反应</li>
+</ol>
+</li>
+</ol>
+<h3 id="2-2-非持续连接和持续连接"><a href="#2-2-非持续连接和持续连接" class="headerlink" title="2.2 非持续连接和持续连接"></a>2.2 非持续连接和持续连接</h3><ol>
+<li>采用非持续连接的HTTP  <ul>
+<li>什么是非持续链接： 每一个请求/响应对是经一个独立的TCP链接发送</li>
+<li>非持续情况下，整个请求响应过程是怎样的？  <ul>
+<li>当我们点击超链接时，实际是一次浏览器与web服务器的三次握手过程</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Title: 挥手</span><br><span class="line">HTTP客户端-&gt;服务器: 发起TCP连接（syn&#x3D;1，seq&#x3D;x）</span><br><span class="line">服务器--&gt;HTTP客户端: 确认和响应（syn&#x3D;1，ack&#x3D;x+1，seq&#x3D;y）</span><br><span class="line">HTTP客户端-&gt;服务器: 返回确认（syn&#x3D;1，ack&#x3D;y+1,seq&#x3D;x+1）</span><br><span class="line">服务器--&gt;HTTP客户端: 文件传输</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">三次握手过程：</span><br><span class="line">（1）首先客户端向服务器端发送一段TCP报文，其中：</span><br><span class="line">    * 标记位为SYN，表示“请求建立新连接”;</span><br><span class="line">    * 序号为Seq&#x3D;X（X一般为1）；</span><br><span class="line">    * 随后客户端进入SYN-SENT阶段。</span><br><span class="line">（2）服务器端接收到来自客户端的TCP报文之后，结束LISTEN阶段。并返回一段TCP报文，其中：</span><br><span class="line">    * 标志位为SYN和ACK，表示“确认客户端的报文Seq序号有效，服务器能正常接收客户端发送的数据，并同意创建新连接”（即告诉客户端，服务器收到了你的数据）；</span><br><span class="line">    * 序号为Seq&#x3D;y；</span><br><span class="line">    * 确认号为Ack&#x3D;x+1，表示收到客户端的序号Seq并将其值加1作为自己确认号Ack的值；随后服务器端进入SYN-RCVD阶段。</span><br><span class="line">（3）客户端接收到来自服务器端的确认收到数据的TCP报文之后，明确了从客户端到服务器的数据传输是正常的，结束SYN-SENT阶段。并返回最后一段TCP报文。其中：</span><br><span class="line">    * 标志位为ACK，表示“确认收到服务器端同意连接的信号”（即告诉服务器，我知道你收到我发的数据了）；</span><br><span class="line">    * 序号为Seq&#x3D;x+1，表示收到服务器端的确认号Ack，并将其值作为自己的序号值；</span><br><span class="line">    * 确认号为Ack&#x3D;y+1，表示收到服务器端序号Seq，并将其值加1作为自己的确认号Ack的值；</span><br><span class="line">    * 客户端进入ESTABLISHED阶段。</span><br><span class="line"></span><br><span class="line">服务器收到来自客户端的“确认收到服务器数据”的TCP报文之后，明确了从服务器到客户端的数据传输是正常的。结束SYN-SENT阶段，进入ESTABLISHED阶段。</span><br><span class="line">在客户端与服务器端传输的TCP报文中，双方的确认号Ack和序号Seq的值，都是在彼此Ack和Seq值的基础上进行计算的，这样做保证了TCP报文传输的连贯性。一旦出现某一方发出的TCP报文丢失，便无法继续&quot;握手&quot;，以此确保了&quot;三次握手&quot;的顺利完成。</span><br></pre></td></tr></table></figure>
 
 
 
+<ol start="2">
+<li><p>采用持续连接的HTTP</p>
+<ul>
+<li><p>非持续链接的HTTP存在两个缺点</p>
+<ul>
+<li><p>必须为每一个请求的对象建立和维护一个连接，对于每一个这样的连接，客户端和服务器都要建立TCP缓存区</p>
+</li>
+<li><p>每一个对象都要经过两倍的RTT交付时延</p>
+<p>（注：RTT（round-Trip Time）：一次请求的往返时间）</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>​       对象的请求可以在一个连接上持续进行，不必等到对未决请求的回答</p>
+<h3 id="2-3-HTTP报文格式"><a href="#2-3-HTTP报文格式" class="headerlink" title="2.3 HTTP报文格式"></a>2.3 HTTP报文格式</h3><ol>
+<li><p>HTTP请求报文</p>
+<p><img src="https://s1.ax1x.com/2020/09/14/wrPNqS.png" alt="httpRequest"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">例子：</span><br><span class="line">GET &#x2F;somedir&#x2F;page.html HTTP&#x2F;1.1</span><br><span class="line">Host:www.someschle.com</span><br><span class="line">Connection:close</span><br><span class="line">User-agent: Mozila&#x2F;5.0</span><br><span class="line">Accept-language:fr</span><br></pre></td></tr></table></figure>
 
 
-<pre><code>2. 采用持续连接的HTTP
-    * 什么是持续连接： 每一个请求/响应对是经一个独立的TCP链接发送</code></pre>
-<h3 id="2-3-HTTP报文格式"><a href="#2-3-HTTP报文格式" class="headerlink" title="2.3 HTTP报文格式"></a>2.3 HTTP报文格式</h3><h3 id="2-4-用户与服务器的交互：cookie"><a href="#2-4-用户与服务器的交互：cookie" class="headerlink" title="2.4 用户与服务器的交互：cookie"></a>2.4 用户与服务器的交互：cookie</h3><h3 id="2-5-Web缓存"><a href="#2-5-Web缓存" class="headerlink" title="2.5 Web缓存"></a>2.5 Web缓存</h3><h3 id="2-6-条件Get方法"><a href="#2-6-条件Get方法" class="headerlink" title="2.6 条件Get方法"></a>2.6 条件Get方法</h3><h2 id="3-因特网中的电子邮件"><a href="#3-因特网中的电子邮件" class="headerlink" title="3. 因特网中的电子邮件"></a>3. 因特网中的电子邮件</h2><pre><code>省略。。。</code></pre>
+
+</li>
+</ol>
+<pre><code>  * http规定的请求方法有GET,POST,HEAD,PUT和DELETE，我们常用的就是get和post两种方法
+
+    * GET方法
+
+      GET方法要求服务器将URL定位的资源放在响应报文的数据部分，回送给客户端。使用GET方法时，请求参数和对应的值附加在URL后面，利用一个问号（“?”）代表URL的结尾与请求参数的开始
+
+      这种方式不适合传送私密数据，需要传送大量数据的时候，也不适合使用GET方式
+
+    * POST方法
+
+      POST方式请求行中不包含数据字符串，这些数据保存在”请求内容”部分，各数据之间也是使用”&amp;”符号隔开
+
+  * 请求头部
+
+    * Host：请求的主机
+    * Connection：close   不要使用持续连接，发送完对象就断开
+    * User-agnet：浏览器类型
+    * Accept-Language：想得到的对象的语言版本
+
+  * 请求体
+
+    POST请求时会把参数放在请求体里面</code></pre>
+<ol start="2">
+<li><p>HTTP响应报文</p>
+<p><img src="https://s1.ax1x.com/2020/09/14/wrVLeP.png" alt="http响应报文"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">例子：</span><br><span class="line">HTTP&#x2F;1.1 200 ok</span><br><span class="line">Connection:close</span><br><span class="line">Date:Tue,18 Aug 2015 15:44:04 GMT</span><br><span class="line">server:</span><br><span class="line">Last-modified:</span><br><span class="line">Content-Length:</span><br><span class="line">Content-Type:</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>状态行</li>
+<li>响应头部</li>
+<li>响应正文</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-4-用户与服务器的交互：cookie"><a href="#2-4-用户与服务器的交互：cookie" class="headerlink" title="2.4 用户与服务器的交互：cookie"></a>2.4 用户与服务器的交互：cookie</h3><h3 id="2-5-Web缓存"><a href="#2-5-Web缓存" class="headerlink" title="2.5 Web缓存"></a>2.5 Web缓存</h3><h3 id="2-6-条件Get方法"><a href="#2-6-条件Get方法" class="headerlink" title="2.6 条件Get方法"></a>2.6 条件Get方法</h3><h2 id="3-因特网中的电子邮件"><a href="#3-因特网中的电子邮件" class="headerlink" title="3. 因特网中的电子邮件"></a>3. 因特网中的电子邮件</h2><pre><code>省略。。。</code></pre>
 <h2 id="4-DNS：因特网的目录服务"><a href="#4-DNS：因特网的目录服务" class="headerlink" title="4. DNS：因特网的目录服务"></a>4. DNS：因特网的目录服务</h2><h2 id="5-P2P文件分发"><a href="#5-P2P文件分发" class="headerlink" title="5. P2P文件分发"></a>5. P2P文件分发</h2><h2 id="6-视频流和内容分发网"><a href="#6-视频流和内容分发网" class="headerlink" title="6. 视频流和内容分发网"></a>6. 视频流和内容分发网</h2><h2 id="7-套接字标称：生成网络应"><a href="#7-套接字标称：生成网络应" class="headerlink" title="7. 套接字标称：生成网络应"></a>7. 套接字标称：生成网络应</h2>
     </div>
 
@@ -393,7 +457,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">计算机网络学习笔记（一）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%EF%BC%9A%E4%BA%94%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">总：五层网络模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-number">3.</span> <span class="nav-text">应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">1 应用层协议原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">3.1.1.</span> <span class="nav-text">1.1 网络应用程序体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="nav-number">3.1.2.</span> <span class="nav-text">1.2 进程间通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B9%8B%E9%97%B4%E7%9A%84%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.1.3.</span> <span class="nav-text">1.3 进程与计算机网络之间的接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E5%8F%AF%E4%BE%9B%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E4%BD%BF%E7%94%A8%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%BF%90%E8%BE%93"><span class="nav-number">3.1.4.</span> <span class="nav-text">1.4 可供应用程序使用的服务运输</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-web%E5%92%8CHTTP"><span class="nav-number">3.2.</span> <span class="nav-text">2. web和HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-HTTP%E6%A6%82%E5%86%B5"><span class="nav-number">3.2.1.</span> <span class="nav-text">2.1 HTTP概况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E9%9D%9E%E6%8C%81%E7%BB%AD%E8%BF%9E%E6%8E%A5%E5%92%8C%E6%8C%81%E7%BB%AD%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.2 非持续连接和持续连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-HTTP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F"><span class="nav-number">3.2.3.</span> <span class="nav-text">2.3 HTTP报文格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BA%A4%E4%BA%92%EF%BC%9Acookie"><span class="nav-number">3.2.4.</span> <span class="nav-text">2.4 用户与服务器的交互：cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-Web%E7%BC%93%E5%AD%98"><span class="nav-number">3.2.5.</span> <span class="nav-text">2.5 Web缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E6%9D%A1%E4%BB%B6Get%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.6.</span> <span class="nav-text">2.6 条件Get方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%9B%A0%E7%89%B9%E7%BD%91%E4%B8%AD%E7%9A%84%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6"><span class="nav-number">3.3.</span> <span class="nav-text">3. 因特网中的电子邮件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-DNS%EF%BC%9A%E5%9B%A0%E7%89%B9%E7%BD%91%E7%9A%84%E7%9B%AE%E5%BD%95%E6%9C%8D%E5%8A%A1"><span class="nav-number">3.4.</span> <span class="nav-text">4. DNS：因特网的目录服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-P2P%E6%96%87%E4%BB%B6%E5%88%86%E5%8F%91"><span class="nav-number">3.5.</span> <span class="nav-text">5. P2P文件分发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E8%A7%86%E9%A2%91%E6%B5%81%E5%92%8C%E5%86%85%E5%AE%B9%E5%88%86%E5%8F%91%E7%BD%91"><span class="nav-number">3.6.</span> <span class="nav-text">6. 视频流和内容分发网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E5%A5%97%E6%8E%A5%E5%AD%97%E6%A0%87%E7%A7%B0%EF%BC%9A%E7%94%9F%E6%88%90%E7%BD%91%E7%BB%9C%E5%BA%94"><span class="nav-number">3.7.</span> <span class="nav-text">7. 套接字标称：生成网络应</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%E2%80%94%E2%80%94-%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-number">1.</span> <span class="nav-text">计算机网络学习笔记（一）—— 应用层</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94%E5%B1%82%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">五层网络模型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E5%B1%82"><span class="nav-number">3.</span> <span class="nav-text">应用层</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%BA%94%E7%94%A8%E5%B1%82%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86"><span class="nav-number">3.1.</span> <span class="nav-text">1 应用层协议原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84"><span class="nav-number">3.1.1.</span> <span class="nav-text">1.1 网络应用程序体系结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1"><span class="nav-number">3.1.2.</span> <span class="nav-text">1.2 进程间通信</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-3-%E8%BF%9B%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E4%B9%8B%E9%97%B4%E7%9A%84%E6%8E%A5%E5%8F%A3"><span class="nav-number">3.1.3.</span> <span class="nav-text">1.3 进程与计算机网络之间的接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-4-%E5%8F%AF%E4%BE%9B%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E4%BD%BF%E7%94%A8%E7%9A%84%E6%9C%8D%E5%8A%A1%E8%BF%90%E8%BE%93"><span class="nav-number">3.1.4.</span> <span class="nav-text">1.4 可供应用程序使用的服务运输</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-web%E5%92%8CHTTP"><span class="nav-number">3.2.</span> <span class="nav-text">2. web和HTTP</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-HTTP%E6%A6%82%E5%86%B5"><span class="nav-number">3.2.1.</span> <span class="nav-text">2.1 HTTP概况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E9%9D%9E%E6%8C%81%E7%BB%AD%E8%BF%9E%E6%8E%A5%E5%92%8C%E6%8C%81%E7%BB%AD%E8%BF%9E%E6%8E%A5"><span class="nav-number">3.2.2.</span> <span class="nav-text">2.2 非持续连接和持续连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-HTTP%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F"><span class="nav-number">3.2.3.</span> <span class="nav-text">2.3 HTTP报文格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-%E7%94%A8%E6%88%B7%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E4%BA%A4%E4%BA%92%EF%BC%9Acookie"><span class="nav-number">3.2.4.</span> <span class="nav-text">2.4 用户与服务器的交互：cookie</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-Web%E7%BC%93%E5%AD%98"><span class="nav-number">3.2.5.</span> <span class="nav-text">2.5 Web缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-%E6%9D%A1%E4%BB%B6Get%E6%96%B9%E6%B3%95"><span class="nav-number">3.2.6.</span> <span class="nav-text">2.6 条件Get方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%9B%A0%E7%89%B9%E7%BD%91%E4%B8%AD%E7%9A%84%E7%94%B5%E5%AD%90%E9%82%AE%E4%BB%B6"><span class="nav-number">3.3.</span> <span class="nav-text">3. 因特网中的电子邮件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-DNS%EF%BC%9A%E5%9B%A0%E7%89%B9%E7%BD%91%E7%9A%84%E7%9B%AE%E5%BD%95%E6%9C%8D%E5%8A%A1"><span class="nav-number">3.4.</span> <span class="nav-text">4. DNS：因特网的目录服务</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-P2P%E6%96%87%E4%BB%B6%E5%88%86%E5%8F%91"><span class="nav-number">3.5.</span> <span class="nav-text">5. P2P文件分发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E8%A7%86%E9%A2%91%E6%B5%81%E5%92%8C%E5%86%85%E5%AE%B9%E5%88%86%E5%8F%91%E7%BD%91"><span class="nav-number">3.6.</span> <span class="nav-text">6. 视频流和内容分发网</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-%E5%A5%97%E6%8E%A5%E5%AD%97%E6%A0%87%E7%A7%B0%EF%BC%9A%E7%94%9F%E6%88%90%E7%BD%91%E7%BB%9C%E5%BA%94"><span class="nav-number">3.7.</span> <span class="nav-text">7. 套接字标称：生成网络应</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
