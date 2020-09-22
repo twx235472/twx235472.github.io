@@ -6,7 +6,7 @@
   <link href="http://yoursite.com/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-09-20T10:00:05.649Z</updated>
+  <updated>2020-09-22T15:43:59.626Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Netty学习-1</title>
+    <link href="http://yoursite.com/2020/09/22/post/"/>
+    <id>http://yoursite.com/2020/09/22/post/</id>
+    <published>2020-09-22T15:31:27.000Z</published>
+    <updated>2020-09-22T15:43:59.626Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Netty-01-基础概念"><a href="#Netty-01-基础概念" class="headerlink" title="Netty-01 基础概念"></a>Netty-01 基础概念</h1><h2 id="1-Netty是什么"><a href="#1-Netty是什么" class="headerlink" title="1. Netty是什么"></a>1. Netty是什么</h2><h2 id="2-Netty的应用场景"><a href="#2-Netty的应用场景" class="headerlink" title="2. Netty的应用场景"></a>2. Netty的应用场景</h2><h2 id="3-三种I-O模型"><a href="#3-三种I-O模型" class="headerlink" title="3. 三种I/O模型"></a>3. 三种I/O模型</h2><p>​        既然要搞懂Netty，那么自然需要先搞懂NIO，所以，先从三种I/O模型开始说起</p><h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Netty-01-基础概念&quot;&gt;&lt;a href=&quot;#Netty-01-基础概念&quot; class=&quot;headerlink&quot; title=&quot;Netty-01 基础概念&quot;&gt;&lt;/a&gt;Netty-01 基础概念&lt;/h1&gt;&lt;h2 id=&quot;1-Netty是什么&quot;&gt;&lt;a href=&quot;</summary>
+      
+    
+    
+    
+    
+    <category term="Netty" scheme="http://yoursite.com/tags/Netty/"/>
+    
+  </entry>
   
   <entry>
     <title>计算机网络(一)</title>
