@@ -22,30 +22,33 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="a little programer">
-<meta property="og:type" content="website">
-<meta property="og:title" content="贝贝的小屋">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="实战训练1. 移动零给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。  示例:  输入: [0,1,0,3,12] 输出: [1,3,12,0,0]  说明:       必须在原数组上操作，不能拷贝额外的数组。     尽量减少操作次数。  Related Topics数组双指针    三种不同的解法 123456789101112131415161">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法训练3——实战训练">
+<meta property="og:url" content="http://yoursite.com/2020/11/01/calc_3_%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E6%88%98/index.html">
 <meta property="og:site_name" content="贝贝的小屋">
-<meta property="og:description" content="a little programer">
+<meta property="og:description" content="实战训练1. 移动零给定一个数组 nums，编写一个函数将所有 0 移动到数组的末尾，同时保持非零元素的相对顺序。  示例:  输入: [0,1,0,3,12] 输出: [1,3,12,0,0]  说明:       必须在原数组上操作，不能拷贝额外的数组。     尽量减少操作次数。  Related Topics数组双指针    三种不同的解法 123456789101112131415161">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-01T04:03:41.000Z">
+<meta property="article:modified_time" content="2020-11-09T15:04:27.516Z">
 <meta property="article:author" content="钢铁雷诺">
+<meta property="article:tag" content="算法训练">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/">
+<link rel="canonical" href="http://yoursite.com/2020/11/01/calc_3_%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E6%88%98/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>贝贝的小屋</title>
+  <title>算法训练3——实战训练 | 贝贝的小屋</title>
   
 
 
@@ -159,9 +162,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -177,10 +181,9 @@
       <meta itemprop="name" content="贝贝的小屋">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/11/01/calc_3_%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%AE%9E%E6%88%98/" class="post-title-link" itemprop="url">算法训练3——实战训练</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          算法训练3——实战训练
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -210,7 +213,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="实战训练"><a href="#实战训练" class="headerlink" title="实战训练"></a>实战训练</h1><h3 id="1-移动零"><a href="#1-移动零" class="headerlink" title="1. 移动零"></a>1. 移动零</h3><p>给定一个数组 <code>nums</code>，编写一个函数将所有 <code>0</code> 移动到数组的末尾，同时保持非零元素的相对顺序。</p>
+        <h1 id="实战训练"><a href="#实战训练" class="headerlink" title="实战训练"></a>实战训练</h1><h3 id="1-移动零"><a href="#1-移动零" class="headerlink" title="1. 移动零"></a>1. 移动零</h3><p>给定一个数组 <code>nums</code>，编写一个函数将所有 <code>0</code> 移动到数组的末尾，同时保持非零元素的相对顺序。</p>
 
 <p><strong>示例:</strong></p>
 
@@ -245,437 +248,52 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">public class Solution &#123;</span><br><span class="line">    public boolean hasCycle(ListNode head) &#123;</span><br><span class="line">        if (head &#x3D;&#x3D; null || head.next &#x3D;&#x3D; null) &#123;</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        ListNode turtle &#x3D; head;</span><br><span class="line">        ListNode rabbit &#x3D; head.next;</span><br><span class="line">        while (turtle !&#x3D; rabbit) &#123;</span><br><span class="line">            if (rabbit &#x3D;&#x3D; null || rabbit.next &#x3D;&#x3D; null) &#123;</span><br><span class="line">                return false;</span><br><span class="line">            &#125;</span><br><span class="line">            turtle &#x3D; turtle.next;</span><br><span class="line">            rabbit &#x3D; rabbit.next.next;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
-      
     </div>
 
     
     
     
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/30/netty_1_NIO/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="钢铁雷诺">
-      <meta itemprop="description" content="a little programer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="贝贝的小屋">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/30/netty_1_NIO/" class="post-title-link" itemprop="url">netty系列1——NIO</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-30 11:03:41" itemprop="dateCreated datePublished" datetime="2020-09-30T11:03:41+08:00">2020-09-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-11 19:59:23" itemprop="dateModified" datetime="2020-10-11T19:59:23+08:00">2020-10-11</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="NIO模型"><a href="#NIO模型" class="headerlink" title="NIO模型"></a>NIO模型</h1><h3 id="一-常见的三种I-O模型"><a href="#一-常见的三种I-O模型" class="headerlink" title="一.  常见的三种I/O模型"></a>一.  常见的三种I/O模型</h3><ol>
-<li><p>什么是I/O模型</p>
-<p>In and out，顾名思义就是说程序的输入输出口，负责程序接受或发送信息</p>
-</li>
-<li><p>常见的三种I/O模型</p>
-<p>我这网上看到说的I/O模型有5种，这里介绍主要的三种模型：BIO，NIO，AIO</p>
-<ul>
-<li><p>BIO（Blocking IO）</p>
-<p>用户每次IO请求发起以后，直接被阻塞，直到完成请求任务以后，整个系统才会继续运行。（你不回答，我就一直等着呗）</p>
-</li>
-<li><p>NIO（nonblocking IO）</p>
-<p>用户每次IO请求发起以后，不阻塞，服务端直接返回结果，用户持续轮询，直到连接完成为止。（你每次都直接回答，我在试试</p>
-<p>）</p>
-</li>
-<li><p>AIO（asynchronous IO）</p>
-<p>用户IO请求发起以后，不管服务是否返回，用户都不管，直接继续自己的事情</p>
-</li>
-</ul>
-</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/30/netty_1_NIO/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+  <div class="followme">
+    <p>欢迎关注我的其它发布渠道</p>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/30/netty_2_%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/">
+    <div class="social-list">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="钢铁雷诺">
-      <meta itemprop="description" content="a little programer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="贝贝的小屋">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/30/netty_2_%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/" class="post-title-link" itemprop="url">netty系列2——线程模型</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-30 11:03:41" itemprop="dateCreated datePublished" datetime="2020-09-30T11:03:41+08:00">2020-09-30</time>
+        <div class="social-item">
+          <a target="_blank" class="social-link" href="/atom.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-11 19:59:24" itemprop="dateModified" datetime="2020-10-11T19:59:24+08:00">2020-10-11</time>
-              </span>
 
-          
-
+            <span class="label">RSS</span>
+          </a>
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="线程模型"><a href="#线程模型" class="headerlink" title="线程模型"></a>线程模型</h1><p>线程模型可以大致分为三种：一对一，一对多，多对多。三种类型各有各的好处，这里为了更好的理解netty的架构设计，所以单独先延伸学习一下这部分。总的来说，以上说的三种情况</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/30/netty_2_%E7%BA%BF%E7%A8%8B%E6%A8%A1%E5%9E%8B/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
     </div>
+  </div>
 
-    
-    
-    
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95%E8%AE%AD%E7%BB%83/" rel="tag"># 算法训练</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/09/30/netty_1_NIO/" rel="prev" title="netty系列1——NIO">
+      <i class="fa fa-chevron-left"></i> netty系列1——NIO
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/30/netty_3_%E7%AE%80%E5%8D%95%E7%9A%84netty%E9%80%9A%E4%BF%A1%E7%A8%8B%E5%BA%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="钢铁雷诺">
-      <meta itemprop="description" content="a little programer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="贝贝的小屋">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/30/netty_3_%E7%AE%80%E5%8D%95%E7%9A%84netty%E9%80%9A%E4%BF%A1%E7%A8%8B%E5%BA%8F/" class="post-title-link" itemprop="url">netty系列3——简易通信程序实例</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-09-30 11:03:41" itemprop="dateCreated datePublished" datetime="2020-09-30T11:03:41+08:00">2020-09-30</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-14 22:42:03" itemprop="dateModified" datetime="2020-10-14T22:42:03+08:00">2020-10-14</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="netty建议实例"><a href="#netty建议实例" class="headerlink" title="netty建议实例"></a>netty建议实例</h1><p>本章实现一个简单的netty的服务端和客户端，为后续阅读源码做准备</p>
-<h3 id="1-功能点："><a href="#1-功能点：" class="headerlink" title="1.功能点："></a>1.功能点：</h3><ul>
-<li>客户端向服务端发送“hello，服务端”</li>
-<li>服务端回复“hello，客户端：xxxx”</li>
-<li>提示连接与断开</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/30/netty_3_%E7%AE%80%E5%8D%95%E7%9A%84netty%E9%80%9A%E4%BF%A1%E7%A8%8B%E5%BA%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/29/internet-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="钢铁雷诺">
-      <meta itemprop="description" content="a little programer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="贝贝的小屋">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/29/internet-1/" class="post-title-link" itemprop="url">计算机网络(一)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-29 17:26:26" itemprop="dateCreated datePublished" datetime="2020-08-29T17:26:26+08:00">2020-08-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-11 19:55:55" itemprop="dateModified" datetime="2020-10-11T19:55:55+08:00">2020-10-11</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="计算机网络学习笔记（一）——-应用层"><a href="#计算机网络学习笔记（一）——-应用层" class="headerlink" title="计算机网络学习笔记（一）—— 应用层"></a>计算机网络学习笔记（一）—— 应用层</h1><h1 id="五层网络模型"><a href="#五层网络模型" class="headerlink" title="五层网络模型"></a>五层网络模型</h1><ol>
-<li><p>为什么要分成五层结构<br> 为了明确分工，网络系统本就是一个复杂的系统，如果没有明确的分层分工，就会出现高耦合的情况，牵一发而动全身<br> 但是如果进行了明确的分层，那么每层的协议相对独立，某一个层面协议调整不会影响整个过程，也方便扩展</p>
-</li>
-<li><p>具体是哪五层<br> 应用层：终端机直接操控接触的一层，是分布式的应用程序交互的通讯层，主要的协议有http，smtp，tcp（豹纹）<br>运输层：主要是在应用层的端口将报文组成报文段，传输给其他终端。主要的协议有tcp，udp（报文段）<br>网络层：主要是针对因特网，主要协议是IP（数据报）<br>链路层：略<br>物理层：略</p>
-</li>
-</ol>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/29/internet-1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/18/method_learn_1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="钢铁雷诺">
-      <meta itemprop="description" content="a little programer">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="贝贝的小屋">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/08/18/method_learn_1/" class="post-title-link" itemprop="url">【第一篇】建立自己的知识体系</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-08-18 19:20:06" itemprop="dateCreated datePublished" datetime="2020-08-18T19:20:06+08:00">2020-08-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-11 19:55:56" itemprop="dateModified" datetime="2020-10-11T19:55:56+08:00">2020-10-11</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="知识体系建立计划"><a href="#知识体系建立计划" class="headerlink" title="知识体系建立计划"></a>知识体系建立计划</h1><p>​    俗话说的好，凡事预则立不预则废，如何让自己不被难题所困，重要的还是要建立知识体系，经过一个多月的计划，现将建立计划的过程记录下来.</p>
-<h2 id="Step1-组建框架脉络"><a href="#Step1-组建框架脉络" class="headerlink" title="Step1:组建框架脉络"></a>Step1:组建框架脉络</h2><p>首先结合自己的生活和工作目标，以终为始。</p>
-<ol>
-<li><p>工作</p>
-<ul>
-<li><strong>计算机技术</strong>：提升自己的<strong>IT技术</strong>是必须的，这是吃饭的家伙，从前端到后端，整个大的框架都需要提升，这点没得说。优先级最高</li>
-<li><strong>管理类知识</strong>：还是有想往上走的意愿，所以管理类的知识也要行夯实，这点是为可能的蜕变做准备。优先级较高</li>
-</ul>
-</li>
-<li><p>生活</p>
-<ul>
-<li><strong>基础学科知识</strong>：高三可以说是一个基础学科的巅峰事情，现在很多<strong>基础学科知识</strong>已经忘光了，由于后面要<strong>辅导贝贝的功课</strong>，同时自己也想要提升，所以相关工作需要持续进行，优先级中</li>
-<li><strong>扩展知识</strong>：生活要去发现有情趣的东西，人类文明几千年，有太多的东西可以去看，丰富自己的知识边界，既可以提高自己的眼界，也可提丰富自己的精神世界</li>
-</ul>
-</li>
-</ol>
-<p>   综上所述，可以归类成四个大的知识领域，这四个领域基本可以组成自己的认知世界，有句话说的好：“你只能看到你认为的世界的样子”，所以努力提高知识边界，才能让自己活得精彩</p>
-<p>​    同时，每个大的知识领域下都有很多细分的小领域，需要注意的是，这些被细分出来的小领域，并不能绝对的认为是该领域的客观全貌。每个小领域下面有分成了许多的独立知识点，这些小领域和知识点根据一定的逻辑来进行排列划分的。</p>
-<p>​    所谓的知识体系，其实一句话概括就是：各种无序的知识点的有序结构排列结果。只要结构化没问题，最终的效果一定不会差</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/08/18/method_learn_1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
@@ -728,6 +346,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E6%88%98%E8%AE%AD%E7%BB%83"><span class="nav-number">1.</span> <span class="nav-text">实战训练</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%A7%BB%E5%8A%A8%E9%9B%B6"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. 移动零</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%9B%9B%E6%B0%B4%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AE%B9%E5%99%A8"><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 盛水最多的容器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E7%88%AC%E6%A5%BC%E6%A2%AF"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. 爬楼梯</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. 三数之和</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8"><span class="nav-number">1.0.5.</span> <span class="nav-text">5. 环形链表</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
